@@ -1,4 +1,4 @@
-package jsp.springboot;
+package jsp.springboot.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -16,12 +16,21 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jsp.springboot.dto.ResponseStructure;
+import jsp.springboot.entity.Book;
+import jsp.springboot.exception.IdNotFoundException;
+import jsp.springboot.repository.BookRepository;
+import jsp.springboot.service.BookService;
+
 
 @RestController
 class BookController {
 	
 	@Autowired
 	private BookRepository bookRepository; 
+	
+	@Autowired 
+	private BookService bookService;
 	
 //	@PostMapping("/book") 
 //	public String saveBook(@RequestBody Book book) {                        // to save single record 
@@ -41,6 +50,21 @@ class BookController {
 //
 //	    return response;
 //	}
+	
+	
+//	@PostMapping("/book")
+//	public ResponseEntity<ResponseStructure<Book>> saveBook(@RequestBody Book book) {
+//
+//	    Book savedBook = bookRepository.save(book);
+//
+//	    ResponseStructure<Book> response = new ResponseStructure<>();
+//	    response.setStatusCode(201);
+//	    response.setMessage("Book Saved Successfully");
+//	    response.setData(savedBook);
+//
+//	    return new ResponseEntity<>(response, HttpStatus.CREATED);
+//	}
+	
 	
 	
 	@PostMapping("/book")
