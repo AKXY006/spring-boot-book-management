@@ -41,22 +41,22 @@ public class BookControllerCustomMethodApi {
 	
 	
 	
-	@GetMapping("/book/{title}/{author}")
-	public ResponseEntity<ResponseStructure<Book>> getBookByTitleAndAuthor(
-	        @PathVariable String title,
-	        @PathVariable String author) {
-
-	    Book book = bookRepository.findByTitleAndAuthor(title, author);
-
-	    ResponseStructure<Book> res = new ResponseStructure<>();
-
-	    res.setStatusCode(HttpStatus.OK.value());
-	    res.setMessage("Book Retrieved Successfully");
-	    res.setData(book);
-
-	    return new ResponseEntity<>(res, HttpStatus.OK);
-	}
-	
+//	@GetMapping("/book/{title}/{author}")
+//	public ResponseEntity<ResponseStructure<Book>> getBookByTitleAndAuthor(
+//	        @PathVariable String title,
+//	        @PathVariable String author) {
+//
+//	    Book book = bookRepository.findByTitleAndAuthor(title, author);
+//
+//	    ResponseStructure<Book> res = new ResponseStructure<>();
+//
+//	    res.setStatusCode(HttpStatus.OK.value());
+//	    res.setMessage("Book Retrieved Successfully");
+//	    res.setData(book);
+//
+//	    return new ResponseEntity<>(res, HttpStatus.OK);
+//	}
+//	
   
 	
 }

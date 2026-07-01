@@ -66,19 +66,10 @@ class BookController {
 //	}
 	
 	
-	
-	@PostMapping("/book")
-	public ResponseEntity<ResponseStructure<Book>> saveBook(@RequestBody Book book) {
-
-	    Book savedBook = bookRepository.save(book);
-
-	    ResponseStructure<Book> response = new ResponseStructure<>();
-	    response.setStatusCode(201);
-	    response.setMessage("Book Saved Successfully");
-	    response.setData(savedBook);
-
-	    return new ResponseEntity<>(response, HttpStatus.CREATED);
-	}
+	   @PostMapping("/book")
+	    public ResponseEntity<ResponseStructure<Book>> saveBook(@RequestBody Book book) {
+	        return bookService.saveBook(book);
+	    }
 	
 	
 	

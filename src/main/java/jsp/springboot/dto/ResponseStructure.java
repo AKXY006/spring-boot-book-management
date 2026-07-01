@@ -1,16 +1,15 @@
 package jsp.springboot.dto;
 
 public class ResponseStructure<T> {
-	private int StatusCode;
+	private int statusCode;
 	private String message;
 	private T data;
 	
-	
 	public int getStatusCode() {
-		return StatusCode;
+		return statusCode;
 	}
 	public void setStatusCode(int statusCode) {
-		StatusCode = statusCode;
+		this.statusCode = statusCode;
 	}
 	public String getMessage() {
 		return message;
@@ -24,4 +23,7 @@ public class ResponseStructure<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
+	
+	
+	
 }

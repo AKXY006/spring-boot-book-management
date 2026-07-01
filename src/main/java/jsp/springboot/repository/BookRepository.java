@@ -31,8 +31,5 @@ public interface BookRepository extends JpaRepository<Book,Integer>{
 	@Query("select b from Book b where b.genre =:genre")
 	List<Book> getBookbyGenre(String genre);
 	
-	
-	
-	
 
 }

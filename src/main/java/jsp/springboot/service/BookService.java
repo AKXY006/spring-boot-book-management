@@ -1,5 +1,8 @@
 package jsp.springboot.service;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -10,18 +13,25 @@ import jsp.springboot.repository.BookRepository;
 @Service
 public class BookService {
 	
+	@Autowired
 	private BookRepository bookRepository;
 	
-	public ResponseEntity<Book> SaveBook(Book book){
-		
-		Book savedBook = bookRepository.save(book);
+	 public ResponseEntity<ResponseStructure<Book>> saveBook(Book book) {          //save sing record 
 
-	    ResponseStructure<Book> response = new ResponseStructure<>();
-	    response.setStatusCode(201);
-	    response.setMessage("Book Saved Successfully");
-	    response.setData(savedBook);
+	        Book savedBook = bookRepository.save(book);
 
-		
-	}
+	        ResponseStructure<Book> response = new ResponseStructure<>();
+	        response.setStatusCode(HttpStatus.CREATED.value());
+	        response.setMessage("Book Saved Successfully");
+	        response.setData(savedBook);
 
+	        return new ResponseEntity<>(response, HttpStatus.CREATED);
+	    }
+
+	 
+	 
+//	 public ResponseEntity<ResponseStructure<List<Book>>>  SaveAllBook(List<Book> books){
+//		 List<Book> saveBooks = 
+//	 }
 }
+ 

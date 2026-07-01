@@ -15,6 +15,8 @@ public class GlobalExceptionController extends ResponseEntityExceptionHandler {
     public ResponseEntity<ResponseStructure<String>> handleINFE(IdNotFoundException exception) {
         return buildResponse(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
+    
+    
 
     @ExceptionHandler(NoRecordAvailableException.class)
     public ResponseEntity<ResponseStructure<String>> handleNRAE(NoRecordAvailableException exception) {
