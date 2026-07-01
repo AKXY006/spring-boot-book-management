@@ -26,40 +26,37 @@ public class BookControllerMain {
 	
 	
 	 @PostMapping("/book")
-	    public ResponseEntity<ResponseStructure<Book>> saveBook(@RequestBody Book book) {
+	    public ResponseEntity<ResponseStructure<Book>> saveBook(@RequestBody Book book) {     // to save single record
 	        return bookService.saveBook(book);
 	    }
 	 
 	 @PostMapping("/book/all")
-	    public ResponseEntity<ResponseStructure<List<Book>>> saveBookAll(@RequestBody List<Book> books) {
+	    public ResponseEntity<ResponseStructure<List<Book>>> saveBookAll(@RequestBody List<Book> books) {  //to save multiple record 
 	        return bookService.saveBookAll(books);
 	    }
 
 	    @GetMapping("/book")
-	    public ResponseEntity<ResponseStructure<List<Book>>> getAllBook() {
+	    public ResponseEntity<ResponseStructure<List<Book>>> getAllBook() {  //to fetch all record
 	        return bookService.getAllBook();
 	    }
 
 	    @GetMapping("/book/{id}")
-	    public ResponseEntity<ResponseStructure<Book>> getBookById(@PathVariable Integer id) {
+	    public ResponseEntity<ResponseStructure<Book>> getBookById(@PathVariable Integer id) {   // to fetch record by id 
 	        return bookService.getBookById(id);
 	    }
 
 	    @PutMapping("/book")
-	    public ResponseEntity<ResponseStructure<Book>> updateBook(@RequestBody Book book) {
+	    public ResponseEntity<ResponseStructure<Book>> updateBook(@RequestBody Book book) {      // update record
 	        return bookService.updateBook(book);
 	    }
 
 	    @PatchMapping("/book/{id}")
-	    public ResponseEntity<ResponseStructure<Book>> updateBookRecord(
-	            @PathVariable Integer id,
-	            @RequestBody Map<String, Object> updates) {
-
+	    public ResponseEntity<ResponseStructure<Book>> updateBookRecord(@PathVariable Integer id,@RequestBody Map<String, Object> updates) {   // update record 
 	        return bookService.updateBookRecord(id, updates);
 	    }
 
 	    @DeleteMapping("/book/{id}")
-	    public ResponseEntity<ResponseStructure<String>> deleteBook(@PathVariable Integer id) {
+	    public ResponseEntity<ResponseStructure<String>> deleteBook(@PathVariable Integer id) {   // delete record by id
 	        return bookService.deleteBook(id);
 	    }
 
