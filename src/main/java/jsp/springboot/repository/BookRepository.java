@@ -23,7 +23,7 @@ public interface BookRepository extends JpaRepository<Book,Integer>{
 	List<Book> findByPriceBetween(double startprice, double endprice);
 	
 	@Query("select b from Book b where b.availability = true")
-	List<Book> getBookByavailability();
+	List<Book> getBookByAvailability();
 	
 	@Query("select b from Book b where b.publishedYear = ?1")
 	List<Book> getBookByYear(Integer publishedYear);
