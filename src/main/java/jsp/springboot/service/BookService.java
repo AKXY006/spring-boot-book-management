@@ -21,8 +21,8 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-                                                                                    // Save single record 
-    public ResponseEntity<ResponseStructure<Book>> saveBook(Book book) {
+                                                                                     
+    public ResponseEntity<ResponseStructure<Book>> saveBook(Book book) {        // Save single record
         Book savedBook = bookRepository.save(book);
         ResponseStructure<Book> res = new ResponseStructure<>();
 
@@ -32,8 +32,8 @@ public class BookService {
         return ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
 
-                                                                                                // Save Multiple Books
-    public ResponseEntity<ResponseStructure<List<Book>>> saveBookAll(List<Book> books) {
+                                                                                                
+    public ResponseEntity<ResponseStructure<List<Book>>> saveBookAll(List<Book> books) {      // Save Multiple Books
         List<Book> savedBooks = bookRepository.saveAll(books);
         ResponseStructure<List<Book>> response = new ResponseStructure<>();
 
@@ -43,8 +43,8 @@ public class BookService {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-                                                                                                 // Get All Books
-    public ResponseEntity<ResponseStructure<List<Book>>> getAllBook() {
+                                                                                                 
+    public ResponseEntity<ResponseStructure<List<Book>>> getAllBook() {                // Get All Books
         List<Book> books = bookRepository.findAll();
         if (books.isEmpty()) {
             throw new NoRecordAvailableException("No Book Records Available");
@@ -59,8 +59,8 @@ public class BookService {
 
     
     
-                                                                                                 // Get Book By Id
-    public ResponseEntity<ResponseStructure<Book>> getBookById(Integer id) {
+                                                                                                 
+    public ResponseEntity<ResponseStructure<Book>> getBookById(Integer id) {            // Get Book By Id
         Optional<Book> option = bookRepository.findById(id);
         if (option.isEmpty()) {
             throw new IdNotFoundException("Book Record With Id : " + id + " Does Not Exist");
@@ -95,10 +95,8 @@ public class BookService {
         return ResponseEntity.ok(response);
     }
 
-                                                                                                      // Update Particular Fields (PATCH)
-    public ResponseEntity<ResponseStructure<Book>> updateBookRecord(Integer id,
-            Map<String, Object> updates) {
-
+                                                                                                      
+    public ResponseEntity<ResponseStructure<Book>> updateBookRecord(Integer id, Map<String, Object> updates) {  // Update Particular Fields (PATCH)
         Optional<Book> option = bookRepository.findById(id);
 
         if (option.isEmpty()) {
@@ -145,10 +143,8 @@ public class BookService {
 
         return ResponseEntity.ok(res);
     }
-
-
-                                                                                                       // Delete Book
-    public ResponseEntity<ResponseStructure<String>> deleteBook(Integer id) {
+                                                                                                      
+    public ResponseEntity<ResponseStructure<String>> deleteBook(Integer id) {              // Delete Book
         Optional<Book> option = bookRepository.findById(id);
         if (option.isEmpty()) {
             throw new IdNotFoundException("Book Record With Id : " + id + " Does Not Exist");

@@ -20,66 +20,50 @@ public class BookControllerCustomMethodApi {
 	@Autowired
 	private BookServiceForCustomMenthod bookService;
 	
-	// 1. Fetch Book By Author
+	
 	@GetMapping("/book/author/{author}")
-	public ResponseEntity<ResponseStructure<List<Book>>> getBookByAuthor(
-	        @PathVariable String author) {
-
+	public ResponseEntity<ResponseStructure<List<Book>>> getBookByAuthor(@PathVariable String author) {    //  Fetch Book By Author
 	    return bookService.getBookByAuthor(author);
 	}
 
 
-	// 2. Fetch Book By Title And Author
 	@GetMapping("/book/{title}/{author}")
-	public ResponseEntity<ResponseStructure<Book>> getBookByTitleAndAuthor(
-	        @PathVariable String title,
-	        @PathVariable String author) {
-
+	public ResponseEntity<ResponseStructure<Book>> getBookByTitleAndAuthor(@PathVariable String title, @PathVariable String author) {    //  Fetch Book By Title And Author
 	    return bookService.getBookByTitleAndAuthor(title, author);
 	}
 
 
-	// 3. Fetch Books By Price Greater Than
+	
 	@GetMapping("/book/pricegreater/{price}")
-	public ResponseEntity<ResponseStructure<List<Book>>> getBookByPriceGreaterThan(
-	        @PathVariable double price) {
-
+	public ResponseEntity<ResponseStructure<List<Book>>> getBookByPriceGreaterThan(@PathVariable double price) {     //  Fetch Books By Price Greater Than
 	    return bookService.getBookByPriceGreaterThan(price);
 	}
 
 
-	// 4. Fetch Books Between Price Range
-	@GetMapping("/book/pricebetween/{startPrice}/{endPrice}")
-	public ResponseEntity<ResponseStructure<List<Book>>> getBookByPriceBetween(
-	        @PathVariable double startPrice,
-	        @PathVariable double endPrice) {
-
+	
+	@GetMapping("/book/pricebetween/{startPrice}/{endPrice}")                                       
+	public ResponseEntity<ResponseStructure<List<Book>>> getBookByPriceBetween(@PathVariable double startPrice, @PathVariable double endPrice) {   // Fetch Books Between Price Range
 	    return bookService.getBookByPriceBetween(startPrice, endPrice);
 	}
 
 
-	// 5. Fetch Available Books
-	@GetMapping("/book/availability")
-	public ResponseEntity<ResponseStructure<List<Book>>> getBookByAvailability() {
 
+	@GetMapping("/book/availability")
+	public ResponseEntity<ResponseStructure<List<Book>>> getBookByAvailability() {   	//Fetch Available Books
 	    return bookService.getBookByAvailability();
 	}
 
 
-	// 6. Fetch Books By Published Year
+	
 	@GetMapping("/book/year/{publishedYear}")
-	public ResponseEntity<ResponseStructure<List<Book>>> getBookByYear(
-	        @PathVariable Integer publishedYear) {
-
-	    return bookService.getBookByYear(publishedYear);
+	public ResponseEntity<ResponseStructure<List<Book>>> getBookByYear(@PathVariable Integer publishedYear) {    // Fetch Books By Published Year
+	    return bookService.getBookByYear(publishedYear);  
 	}
 
 
-	// 7. Fetch Books By Genre
+	
 	@GetMapping("/book/genre/{genre}")
-	public ResponseEntity<ResponseStructure<List<Book>>> getBookByGenre(
-	        @PathVariable String genre) {
-
+	public ResponseEntity<ResponseStructure<List<Book>>> getBookByGenre(@PathVariable String genre) {   // Fetch Books By Genre
 	    return bookService.getBookByGenre(genre);
 	}
 	

@@ -64,21 +64,18 @@ class BookController {
 	public String updateBook(@RequestBody Book book) {                           
 		                                                                         //used to update the entire update // client should send entire object
 		//case 1 : ID not provided
-		
 		if(book.getId()==null) {
 			return "Id Must Pass To Update The Record";
 		}
 		Optional<Book> option = bookRepository.findById(book.getId());
 		
 		//case 2 : Id Exist
-		
 		if(option.isPresent()) {
 			bookRepository.save(book);
 			return "Book Record With Id : "+ book.getId()+" Updated";	
 		}
 		
 		//case 3 : ID does not exist
-		
 		else {
 			return "Book Record With Id : "+ book.getId()+" Does Not Exist In DataBase";
 		}
@@ -87,10 +84,8 @@ class BookController {
 	
 
 	@PatchMapping("/book/{id}")
-	public String updateBookRecord(@PathVariable Integer id,              // Used to update only specific record 
-	        @RequestBody Map<String, Object> updates) {
-                                                                        // the client send only the field that to be updated 
-	    Optional<Book> option = bookRepository.findById(id);
+	public String updateBookRecord(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {             // Used to update only specific record 
+	    Optional<Book> option = bookRepository.findById(id);                                               // the client send only the field that to be updated 
 
 	    if (option.isPresent()) {
 	        Book book = option.get();
@@ -131,7 +126,6 @@ class BookController {
 
 	@DeleteMapping("/book/{id}")
 	public String deleteRecord(@PathVariable Integer id) {                 // Delete Record 
-		
 		Optional<Book> opt = bookRepository.findById(id);
 		
 		if(opt.isPresent()) {
